@@ -1,6 +1,6 @@
 # Личный проект «{{projectTitle}}»
 
-* Студент: [{{userName}}]({{git@github.com:MitrofAndrei/YetiCave.git}}).
+* Студент: [{{Ahdrey}}]({{userProfile}}).
 * Наставник: `Неизвестно`.
 
 ---
