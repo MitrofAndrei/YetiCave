@@ -24,6 +24,11 @@ function include_template($name, array $data = []) {
     return $result;
 };
 
+/**
+ * Форматирует цену лота - разделяет пробелом разряды числа, добавляет знак рубля
+ * @param integer $num Цена лота
+ * @return string Как цена будет показываться в карточке
+*/
 function format_coost($num){
     $num = ceil($num);
     if($num > 1000){                                
@@ -31,6 +36,11 @@ function format_coost($num){
     }
     return $num . " ₽";};
 
+/**
+ * Возвращеет количество целых часов и остатка минут от настоящего времени до даты
+ * @param string $date Дата истечения времени
+ * @return array
+ */
 function get_time_left($date)
     {
         date_default_timezone_set('Europe/Moscow');
@@ -50,6 +60,17 @@ function get_time_left($date)
         return $res;
     }
     
+/**
+ * Формирует SQL-запрос для получения списка новых лотов от определенной даты, с сортировкой
+ * @param string $date Дата в виде строки, в формате 'YYYY-MM-DD'
+ * @return string SQL-запрос
+ */
+function get_query_list_lots($date)
+{
+    return "SELECT lots.title, lots.start_price, lots.img, lots.date_finish, categories.name_category FROM lots
+    JOIN categories ON lots.category_id=categories.id
+    WHERE date_creation > $date ORDER BY date_creation DESC";
+}
 
     
 ?>
