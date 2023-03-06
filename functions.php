@@ -7,24 +7,8 @@
  * @param array $data Ассоциативный массив с данными для шаблона
  * @return string Итоговый HTML
  */
-function include_template($name, array $data = []) {
-    $name = 'templates/' . $name;
-    $result = '';
 
-    if (!is_readable($name)) {
-        return $result;
-    }
-
-    ob_start();
-    extract($data);
-    require $name;
-
-    $result = ob_get_clean();
-
-    return $result;
-};
-
-/**
+ /**
  * Форматирует цену лота - разделяет пробелом разряды числа, добавляет знак рубля
  * @param integer $num Цена лота
  * @return string Как цена будет показываться в карточке
